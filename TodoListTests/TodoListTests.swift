@@ -6,6 +6,7 @@
 //  Copyright © 2016 George. All rights reserved.
 //
 
+import UIKit
 import XCTest
 @testable import TodoList
 
@@ -15,7 +16,7 @@ class TodoListTests: XCTestCase {
     
     // Test to confirm that the TodoList initializer returns when no name
     // is provided
-    func todoListInitialization() {
+    func testTodoListInitialization() {
         
         // Success case
         let potentialItem = Todo(name: "Pick up the mail")
@@ -23,8 +24,7 @@ class TodoListTests: XCTestCase {
         
         // Failure case
         let noName = Todo(name: "")
-        XCTAssertNotNil(noName, "Empty name is invalid")
+        XCTAssertNil(noName)
     }
-   
 
 }
