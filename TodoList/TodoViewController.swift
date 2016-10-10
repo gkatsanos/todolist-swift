@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TodoViewController.swift
 //  TodoList
 //
 //  Created by George on 09/10/16.
@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class TodoViewController: UIViewController, UITextFieldDelegate {
 // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
-    @IBOutlet weak var todoTitle: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -26,7 +25,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        todoTitle.text = textField.text
+
     }
     // MARK: Actions
     @IBAction func AddTodo(_ sender: AnyObject) {
