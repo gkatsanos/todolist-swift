@@ -99,7 +99,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Todo" id="rJN-ox-eov">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fpu-su-WLF"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5V6-j6-4KG"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="5V6-j6-4KG">
+                            <connections>
+                                <segue destination="Zpa-0d-r18" kind="unwind" unwindAction="unwindToTodoListWithSender:" id="mR9-Px-6ae"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="nameTextField" destination="3FB-Dh-5EJ" id="oBH-vM-g9I"/>
@@ -107,6 +111,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="Zpa-0d-r18" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1989.5999999999999" y="121.88905547226388"/>
         </scene>

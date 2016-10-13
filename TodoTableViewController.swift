@@ -48,7 +48,7 @@ class TodoTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellIdentifier = "TodoTableViewCell"
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! TodoTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! TodoTableViewCell
 
         // Fetches the appropriate todo for the data source layout.
         let todo = todos[indexPath.row]
@@ -105,10 +105,10 @@ class TodoTableViewController: UITableViewController {
     */
     
     @IBAction func unwindToTodoList(sender: UIStoryboardSegue) {
-        if let sourceViewController = sender.source as?
-            TodoViewController, todo = source.todo {
-            let newIndexPath = NSIndexPath(forRow: todo.count, inSection: 0)
+        if let sourceViewController = sender.source as? TodoViewController, let todo = sourceViewController.todo {
+            let newIndexPath = IndexPath(row: todos.count, section: 0)
+            todos.append(todo)
+            tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation.bottom)
         }
     }
-
 }

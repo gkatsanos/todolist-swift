@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoViewController: UIViewController, UITextFieldDelegate {
+class TodoViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
 // MARK: Properties
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
@@ -19,6 +19,9 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
+        
+        // Enable the Save button only if the text field has a valid Meal name.
+        checkValidTodoName()
     }
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -27,9 +30,22 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        // Disable the Save button while editing.
+        saveButton.isEnabled = false
     }
+    
+    func checkValidTodoName() {
+        // Disable the Save button if the text field is empty.
+        let text = nameTextField.text ?? ""
+        saveButton.isEnabled = !text.isEmpty
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        checkValidTodoName()
+        navigationItem.title = textField.text
+    }
+    
     // MARK: Navigation
     
     // This method lets you configure a view controller before it's presented.
@@ -37,7 +53,7 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         if saveButton === sender {
             let name = nameTextField.text ?? ""
             
-            // Set the meal to be passed to MealTableViewController after the unwind segue.
+            // Set the todo to be passed to TodoTableViewController after the unwind segue.
             todo = Todo(name: name)
         }
     }

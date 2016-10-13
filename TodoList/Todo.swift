@@ -17,7 +17,7 @@ class Todo {
     
     init?(name: String) {
         self.name = name
-        if (name.isEmpty || name == "") {
+        if name.isEmpty {
             return nil
         }
     }
