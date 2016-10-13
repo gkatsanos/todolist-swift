@@ -9,8 +9,12 @@
 import UIKit
 
 class TodoViewController: UIViewController, UITextFieldDelegate {
-// MARK: Properties
+    
+    // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
+    
+    var todo: Todo?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,6 +31,17 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
 
     }
+    
+    // MARK: Navigation
+    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
+        if saveButton === sender {
+            let name = nameTextField.text ?? ""
+            
+            // Set the meal to be passed to MealTableViewController after the unwind segue.
+            todo = Todo(name: name)
+        }
+    }
+    
     // MARK: Actions
     @IBAction func AddTodo(_ sender: AnyObject) {
     }

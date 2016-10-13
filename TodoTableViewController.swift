@@ -104,4 +104,12 @@ class TodoTableViewController: UITableViewController {
     }
     */
 
+    @IBAction func unwindToTodoList(sender: UIStoryboardSegue) {
+        if let source = sender.source as? TodoViewController, let todo = source.todo {
+            // Add a new todo.
+            let newIndexPath = IndexPath(row: todos.count, section: 0)
+            todos.append(todo)
+            tableView.insertRows(at: [newIndexPath], with: UITableViewRowAnimation .bottom)
+        }
+    }
 }
