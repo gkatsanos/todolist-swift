@@ -98,7 +98,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Todo" id="rJN-ox-eov">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fpu-su-WLF"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Fpu-su-WLF">
+                            <connections>
+                                <action selector="cancel:" destination="BYZ-38-t0r" id="4c7-Bw-Bso"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="5V6-j6-4KG">
                             <connections>
                                 <segue destination="Zpa-0d-r18" kind="unwind" unwindAction="unwindToTodoListWithSender:" id="mR9-Px-6ae"/>

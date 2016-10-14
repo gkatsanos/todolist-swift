@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
+class TodoViewController: UIViewController, UITextFieldDelegate {
 // MARK: Properties
     @IBOutlet weak var saveButton: UIBarButtonItem!
     @IBOutlet weak var nameTextField: UITextField!
@@ -48,14 +48,16 @@ class TodoViewController: UIViewController, UITextFieldDelegate, UINavigationCon
     
     // MARK: Navigation
     
+    @IBAction func cancel(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // This method lets you configure a view controller before it's presented.
-    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        if saveButton === sender {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             let name = nameTextField.text ?? ""
             
             // Set the todo to be passed to TodoTableViewController after the unwind segue.
             todo = Todo(name: name)
-        }
     }
     
     // MARK: Actions
