@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TodoViewController: UIViewController, UITextFieldDelegate {
+class TodoViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate {
     
     // MARK: Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -21,6 +21,7 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
     }
+    
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         // Hide the keyboard.
@@ -33,14 +34,13 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Navigation
-    func prepare(for segue: UIStoryboardSegue, sender: AnyObject?) {
-        if saveButton === sender {
-            let name = nameTextField.text ?? ""
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let name = nameTextField.text ?? ""
             
-            // Set the meal to be passed to MealTableViewController after the unwind segue.
-            todo = Todo(name: name)
-        }
+        // Set the todo to be passed to TodoTableViewController after the unwind segue.
+        todo = Todo(name: name)
     }
+    
     
     // MARK: Actions
     @IBAction func AddTodo(_ sender: AnyObject) {
