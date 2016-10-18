@@ -19,6 +19,10 @@ class TodoViewController: UIViewController, UITextFieldDelegate {
         
         // Handle the text field’s user input through delegate callbacks.
         nameTextField.delegate = self
+        if let todo = todo {
+            navigationItem.title = todo.name
+            nameTextField.text   = todo.name
+        }
         
         // Enable the Save button only if the text field has a valid Meal name.
         checkValidTodoName()

@@ -20,7 +20,7 @@
                                 <rect key="frame" x="0.0" y="89" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2ob-7m-xxv" id="Hbf-KS-ExP">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="90"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ImA-1r-Jxc">
@@ -34,6 +34,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameLabel" destination="ImA-1r-Jxc" id="L13-q2-u5g"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="ShowDetail" id="Gib-ab-c6r"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -153,7 +154,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REL-ra-389" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1050.4000000000001" y="121.88905547226388"/>
+            <point key="canvasLocation" x="1103" y="470"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Gib-ab-c6r"/>
+    </inferredMetricsTieBreakers>
 </document>

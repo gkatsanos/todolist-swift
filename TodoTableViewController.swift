@@ -94,15 +94,25 @@ class TodoTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "ShowDetail" {
+            let todoDetailViewController = segue.destination as! TodoViewController
+            
+            // Get the cell that generated this segue
+            if let selectedTodoCell = sender as? TodoTableViewCell {
+                let indexPath = tableView.indexPath(for: selectedTodoCell)!
+                let selectedTodo = todos[indexPath.row]
+                todoDetailViewController.todo = selectedTodo
+            }
+        } else if segue.identifier == "AddItem" {
+            print("Adding new meal")
+        }
     }
-    */
+    
     
     @IBAction func unwindToTodoList(sender: UIStoryboardSegue) {
         if let sourceViewController = sender.source as? TodoViewController, let todo = sourceViewController.todo {
